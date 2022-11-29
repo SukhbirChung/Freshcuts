@@ -1,0 +1,122 @@
+﻿@mixin menu-items-display-settings($dis: initial, $pos: initial, $width: initial, $height: initial) {
+    display: $dis;
+    position: $pos;
+    width: $width;
+    height: $height;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+    font-family: 'PT Serif', serif;
+    scroll-behavior: smooth;
+}
+
+.navigation{
+    max-width: 1250px;
+    margin: auto;
+    padding-inline: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menuItems {
+    @include menu-items-display-settings(none, absolute, 90vw, 100vw);
+    right: 0;
+    top: 0;
+    background-color: #fff;
+}
+
+.menuItem {
+    text-align: right;
+    padding: 15px;
+
+    a {
+        text-decoration: none;
+        color: #000;
+
+        &:hover {
+            color: #029447;
+        }
+    }
+}
+
+#phoneNum {
+    background-color: #4199D4;
+    padding: inherit;
+    border-radius: 5px;
+    color: #fff;
+
+    &:hover {
+        background-color: #029447;
+    }
+}
+
+.menuIcon {
+    div {
+        width: 15px;
+        height: 2px;
+        margin-block: 3px;
+        background-color: #ff6b6d;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 525px) and (max-width: 950px) {
+    .navigation {
+        padding-inline: 40px;
+    }
+}
+
+@media (min-width: 950px){
+    .logo img {
+        width: 200px;
+    }
+
+    .menuItems {
+        @include menu-items-display-settings();
+
+        ul {
+            display: flex;
+        }
+
+        .closeBtn {
+            display: none;
+        }
+    }
+
+    .menuIcon{
+        display: none;
+    }
+}
+
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.80;
+    background: #aaa;
+}
+
+/* Footer */
+footer {
+    padding-block: 15px;
+    background-color: #141E30;
+    text-align: center;
+    color: white;
+    line-height: 20px;
+}
+
+footer a {
+    color: #ffc700;
+    text-decoration: none;
+}
