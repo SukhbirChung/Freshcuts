@@ -163,10 +163,10 @@ h3 {
 #about a {
   display: inline-block;
   width: 100%;
-  margin-top: 30px;
+  margin: 30px auto 0;
   border-radius: 8px;
   padding: 15px;
-  background: radial-gradient(#ff6b6d, #ff6b6d);
+  background-color: #ff6b6d;
   text-align: center;
   text-decoration: none;
   color: white;
@@ -178,9 +178,90 @@ h3 {
   margin-bottom: 10px;
 }
 
+.contact {
+  padding-block: 50px;
+}
+
+.contact:nth-of-type(1) {
+  background: linear-gradient(#2387C9, #029447);
+}
+.contact:nth-of-type(1) p {
+  color: white;
+  text-align: center;
+}
+.contact:nth-of-type(1) a:nth-of-type(1) {
+  display: block;
+  width: max-content;
+  margin: 30px auto 0;
+  border-radius: 50%;
+  padding: 15px 18px;
+  background-color: #ff6b6d;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+.contact:nth-of-type(1) a:nth-of-type(2) {
+  display: inline-block;
+  width: initial;
+  margin: 30px auto 0;
+  border-radius: initial;
+  padding: initial;
+  background-color: initial;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+iframe {
+  width: 100%;
+  height: 350px;
+}
+
+/* Footer */
+.footerFlexContainer {
+  background-color: #0c2e30;
+  color: #029447;
+  line-height: 1.7rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.footerFlexContainer h3 {
+  margin-top: 30px;
+  font-weight: initial;
+  color: #4199d4;
+}
+.footerFlexContainer img {
+  display: block;
+  margin: auto;
+}
+
+#copyright {
+  padding-block: 15px;
+  text-align: center;
+}
+#copyright a {
+  text-decoration: none;
+  color: #ffc700;
+}
+
 @media (min-width: 525px) and (max-width: 950px) {
   .navigation {
     padding-inline: 40px;
+  }
+}
+@media (min-width: 600px) {
+  .footerFlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .footerFlexItem {
+    width: 49%;
+  }
+  .footerFlexItem img:nth-of-type(2) {
+    width: 100%;
+    max-width: 262px;
   }
 }
 @media (min-width: 950px) {
@@ -217,6 +298,12 @@ h3 {
   .flexItem {
     width: 31%;
   }
+  .contact:nth-of-type(2) {
+    padding-inline: 10%;
+  }
+  .footerFlexItem {
+    width: 24%;
+  }
 }
 .cover {
   position: fixed;
@@ -226,20 +313,6 @@ h3 {
   height: 100vh;
   opacity: 0.8;
   background: #aaa;
-}
-
-/* Footer */
-footer {
-  padding-block: 15px;
-  background-color: #141E30;
-  text-align: center;
-  color: white;
-  line-height: 20px;
-}
-
-footer a {
-  color: #ffc700;
-  text-decoration: none;
 }
 
 /*# sourceMappingURL=index.css.map */
