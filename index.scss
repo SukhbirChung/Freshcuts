@@ -1,12 +1,33 @@
-﻿@mixin menu-items-display-settings($dis: initial, $pos: initial, $width: initial, $height: initial) {
+﻿@use "sass:list";
+
+@mixin menu-items-display-settings($dis: initial, $pos: initial, $width: initial, $height: initial) {
     display: $dis;
     position: $pos;
     width: $width;
     height: $height;
 }
+@mixin flex-item-settings($first-clr: initial, $second-clr: initial, $padding: 30px) {
+    margin-top: 30px;
+    border-radius: 8px;
+    padding: $padding;
+    background: radial-gradient($first-clr, $second-clr);
+}
+@mixin max-settings($max-width) {
+    max-width: $max-width;
+    margin-inline: auto;
+}
+@function add-stars($num-of-stars){
+    $content: null;
+    @for $num from 1 through $num-of-stars{
+        $content: $content + url(Images/star.png);
+    }
+    @return $content;
+}
 
 * {
     box-sizing: border-box;
+    line-height: 1.7rem;
+    letter-spacing: 1px;
 }
 
 html {
@@ -15,9 +36,16 @@ html {
     scroll-behavior: smooth;
 }
 
-.navigation{
-    max-width: 1250px;
-    margin: auto;
+i{
+    font-style: italic; 
+}
+
+b {
+    font-weight: 600;
+}
+
+.navigation {
+    @include max-settings(1250px);
     padding-inline: 20px;
     display: flex;
     justify-content: space-between;
@@ -73,13 +101,91 @@ html {
     }
 }
 
+.mainContent {
+    padding: 64px 24px;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+
+    span {
+        display: block;
+        margin-top: 30px;
+        @include max-settings(450px);
+        font-size: 1rem;
+    }
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#services h2 {
+    @include max-settings(700px);
+    border-radius: 20px;
+    padding-block: 20px;
+    background-image: url(Images/Services/servicesHeadingBackground.png);
+    background-size: cover;
+    color: white;
+}
+
+$service-clrs: (
+    (#ffffff, #1B9447), 
+    (#ffffff, #2BBEC0), 
+    (#ffffff, #2564B0));
+$first-clr: null;
+$second-clr: null;
+
+@for $i from 1 through 3{
+    $first-clr: list.nth(list.nth($service-clrs, $i), 1);
+    $second-clr: list.nth(list.nth($service-clrs, $i), 2);
+    #services .flexItem:nth-of-type(#{$i}) {
+        @include flex-item-settings($first-clr, $second-clr);
+    }
+    #testimonials .flexItem:nth-of-type(#{$i}) {
+        @include flex-item-settings(#ffcaca, #ffcaca);
+    }
+}
+
+.service{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+#about {
+    background-color: #f4ebea;
+
+    p {
+        @include max-settings(500px);
+        margin-top: 30px;
+    }
+
+    a {
+        display: inline-block;
+        width: 100%;
+        @include flex-item-settings(#ff6b6d, #ff6b6d, 15px);
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.feedback:before {
+    content: add-stars(5);
+    display: block;
+    margin-bottom: 10px;
+}
+
 @media (min-width: 525px) and (max-width: 950px) {
     .navigation {
         padding-inline: 40px;
     }
 }
 
-@media (min-width: 950px){
+@media (min-width: 950px) {
     .logo img {
         width: 200px;
     }
@@ -96,8 +202,25 @@ html {
         }
     }
 
-    .menuIcon{
+    .menuIcon {
         display: none;
+    }
+
+    .flexContainer {        
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #services .flexContainer {
+        @include max-settings(1250px);
+    }
+
+    #testimonials .flexContainer {
+        @include max-settings(1100px);
+    }
+
+    .flexItem {
+        width: 31%;
     }
 }
 
