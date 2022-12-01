@@ -36,6 +36,29 @@ function showSidebar(flag, e) {
     }
 }
 
+/* Welcome and Images Section */
+const welcomeSection = document.querySelector('#welcome');
+const imagesSectionFlexItems = document.querySelectorAll('#images .flexItem');
+for (let flexItem of imagesSectionFlexItems) {
+    flexItem.style.backgroundImage = `url(Images/Services/${flexItem.querySelector('p').innerText}1.jpg)`;
+}
+
+let welcomeImageNum = 2;
+let imagesSectionImageNum = 2;
+window.addEventListener('load', () => {
+    setInterval(() => {
+        welcomeSection.style.backgroundImage = `url(Images/Welcome/welcome${welcomeImageNum}.jpg)`;
+        welcomeImageNum++;
+        if (welcomeImageNum === 4) {
+            welcomeImageNum = 1;
+        }
+        for (let flexItem of imagesSectionFlexItems) {
+            flexItem.style.backgroundImage = `url(Images/Services/${flexItem.querySelector('p').innerText}${imagesSectionImageNum}.jpg)`;
+        }
+        imagesSectionImageNum = imagesSectionImageNum === 2 ? 1 : 2;
+    }, 5000);
+});
+
 /* Set the current year in footer */
 let year = document.querySelector('footer span');
 year.textContent = new Date().getFullYear();
