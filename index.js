@@ -19,7 +19,8 @@ function showSidebar(flag, e) {
     }
     if ((e.type === 'click' && flag) ||
         (e.type === 'resize' && !flag && document.documentElement.clientWidth > 949) ||
-        (e.type === 'resize' && flag)) {
+        (e.type === 'resize' && flag) ||
+        (document.documentElement.clientWidth >= 949)) {
         this.previousElementSibling.style.display = "initial";
     }
 
